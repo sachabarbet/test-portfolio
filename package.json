@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-arcade",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portfolio interactif — platformer 2D sombre/néon en Canvas vanilla (zéro dépendance).",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

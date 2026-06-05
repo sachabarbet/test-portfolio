@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Portfolio — Développeur Mobile · Web · IoT</title>
+    <meta
+      name="description"
+      content="Portfolio interactif : explore un niveau 2D pour découvrir mes projets, mon parcours et mes compétences."
+    />
+
+    <!-- Polices (progressive enhancement : fallback système si hors-ligne) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Scène de jeu -->
+    <canvas id="game" aria-label="Niveau interactif du portfolio"></canvas>
+
+    <!-- HUD (en haut) -->
+    <header id="hud" class="hidden">
+      <div class="hud-id">
+        <span class="hud-name" id="hudName">Nom</span>
+        <span class="hud-role" id="hudRole">Rôle</span>
+      </div>
+      <div class="hud-stats">
+        <span class="stat" title="Zones découvertes">
+          <span class="stat-ico">◈</span><span id="zoneCount">0/4</span>
+        </span>
+        <span class="stat" title="Fragments collectés">
+          <span class="stat-ico">✦</span><span id="scoreCount">0</span>
+        </span>
+        <button id="muteBtn" class="icon-btn" title="Son" aria-label="Activer/couper le son">
+          ♪
+        </button>
+      </div>
+    </header>
+
+    <!-- Toast d'indice -->
+    <div id="hint" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- Contrôles tactiles (mobile) -->
+    <div id="touch" class="touch" aria-hidden="true">
+      <div class="touch-left">
+        <button id="btnLeft" class="tbtn" aria-label="Gauche">◀</button>
+        <button id="btnRight" class="tbtn" aria-label="Droite">▶</button>
+      </div>
+      <button id="btnJump" class="tbtn tbtn-jump" aria-label="Sauter">▲</button>
+    </div>
+
+    <!-- Écran-titre -->
+    <div id="intro" class="overlay">
+      <div class="intro-card">
+        <p class="intro-kicker">PORTFOLIO INTERACTIF</p>
+        <h1 class="intro-title" id="introName">Nom Prénom</h1>
+        <p class="intro-role" id="introRole">Développeur Mobile · Web · IoT</p>
+        <p class="intro-sub" id="introSub">Description…</p>
+
+        <div class="intro-controls">
+          <div class="kbd-row">
+            <span class="kbd">←</span><span class="kbd">→</span>
+            <span class="ctrl-label">se déplacer</span>
+          </div>
+          <div class="kbd-row">
+            <span class="kbd">Espace</span><span class="kbd">↑</span>
+            <span class="ctrl-label">sauter</span>
+          </div>
+        </div>
+
+        <button id="startBtn" class="cta">Commencer l’exploration</button>
+        <p class="intro-foot">Approche-toi des portails néon pour révéler le contenu.</p>
+      </div>
+    </div>
+
+    <!-- Panneau de contenu (révélé en atteignant une zone) -->
+    <div id="panel" class="panel hidden" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+      <div class="panel-inner">
+        <button id="panelClose" class="panel-close" aria-label="Fermer">✕</button>
+        <div id="panelBody"><!-- injecté par ui.js --></div>
+        <p class="panel-hint">Échap ou ✕ pour reprendre l’exploration</p>
+      </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
